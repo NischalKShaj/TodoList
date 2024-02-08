@@ -15,7 +15,7 @@ const App = () => {
         <button>Add Task</button>
       </div>
       <div className="todoList"></div>
-    </div>
+    </div> 
   );
 };
 
