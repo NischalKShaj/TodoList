@@ -1,5 +1,12 @@
 /* box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; */
 
-.TodoContainer{
-    box-shadow: rgb(38,57,77)0px 20px 30px -10px;
+.TodoContainer {
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  margin: auto;
+  max-width: 800px; /* Example width, adjust as needed */
+  width: 100%;
 }

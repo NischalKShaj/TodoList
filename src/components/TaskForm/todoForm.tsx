@@ -1,6 +1,10 @@
 import React, { FormEvent, useRef, useState } from "react";
 
-const TodoForm = () => {
+interface TodoFormProps {
+  onSave: (input: string, description: string) => void;
+}
+
+const TodoForm:React.FC<TodoFormProps> = ({onSave}) => {
   const [input, setInput] = useState("");
   const [description, setDescription] = useState("");
 
@@ -19,6 +23,9 @@ const TodoForm = () => {
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
+    onSave(input, description);
+    setInput("");
+    setDescription("");
   };
 
   return (
