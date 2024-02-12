@@ -1,6 +1,7 @@
 import { Checkbox, FontIcon, initializeIcons } from "@fluentui/react";
 import React, { useState } from "react";
 import { TodoListTask } from "../types";
+import "./TaskList.css";
 
 initializeIcons();
 
@@ -28,15 +29,18 @@ const TaskList: React.FC<TaskListProps> = ({
       const updatedTask = prevTask.map((task) =>
         task.id === id ? { ...task, isCompleted: isChecked } : task
       );
-      const completeTask = prevTask.find((task) => task.id === id && isChecked);
 
-      if (completeTask) {
-        setCompletedTasks((prevCompletedTask) => [
-          ...prevCompletedTask,
-          completeTask,
-        ]);
+      if (isChecked) {
+        const completeTask = updatedTask.find((task) => task.id === id);
+        if (completeTask) {
+          setCompletedTasks((prevCompletedTask) => [
+            ...prevCompletedTask,
+            completeTask,
+          ]);
+        }
       }
-      return updatedTask.filter((tasks) => tasks.id !== id && !isChecked);
+
+      return updatedTask.filter((task) => task.isCompleted || task.id !== id);
     });
   };
 
@@ -62,7 +66,7 @@ const TaskList: React.FC<TaskListProps> = ({
   return (
     <div>
       {tasks.map((item) => (
-        <div key={item.id}>
+        <div key={item.id} className="task-box">
           <Checkbox
             checked={item.isCompleted}
             onChange={(_, checked) =>
@@ -70,7 +74,11 @@ const TaskList: React.FC<TaskListProps> = ({
             }
           />
           <span>{item.Task}</span>
-          <FontIcon iconName="Info" title={item.description} style={{cursor:"pointer"}}/>
+          <FontIcon
+            iconName="Info"
+            title={item.description}
+            style={{ cursor: "pointer" }}
+          />
           <input
             id={`nameInput-${item.id}`}
             type="text"

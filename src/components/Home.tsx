@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import "./Home.css";
 import TodoForm from "./TaskForm/todoForm";
 import { Pivot, PivotItem } from "@fluentui/react";
 import TaskList from "./TaskList/TaskList";
 import { TodoListTask } from "./types";
 import TodoComplete from "./TaskCompleted/todoComplete";
+import "./Home.css"
 
 const Home = () => {
   // for loading the stored component
@@ -26,6 +26,11 @@ const Home = () => {
   }, [completedTask]);
 
   const handleSaveTask = (input: string, description: string) => {
+    if (tasks.some((task) => task.Task === input)) {
+      // Task is already added, show error message
+      alert("Task is already added.");
+      return;
+    }
     const newTask: TodoListTask = {
       id: (tasks.length + 1).toString(),
       Task: input,
@@ -37,25 +42,25 @@ const Home = () => {
 
   return (
     <div className="TodoContainer">
-      <Pivot aria-label="Large Link Size Pivot Example" linkSize="large">
-        <PivotItem headerText="Task">
-          <TaskList
-            tasks={tasks}
-            setTask={setTask}
-            completedTasks={completedTask}
-            setCompletedTasks={setCompletedTasks}
-          />
-        </PivotItem>
-        <PivotItem headerText="Add Task">
-          <TodoForm onSave={handleSaveTask} />
-        </PivotItem>
-        <PivotItem headerText="Completed Task">
-          <TodoComplete
-            setCompletedTask={setCompletedTasks}
-            completedTasks={completedTask}
-          />
-        </PivotItem>
-      </Pivot>
+        <Pivot >
+            <PivotItem headerText="Task">
+              <TaskList
+                tasks={tasks}
+                setTask={setTask}
+                completedTasks={completedTask}
+                setCompletedTasks={setCompletedTasks}
+              />
+            </PivotItem>
+          <PivotItem headerText="Add Task">
+            <TodoForm onSave={handleSaveTask} />
+          </PivotItem>
+          <PivotItem headerText="Completed Task">
+            <TodoComplete
+              setCompletedTask={setCompletedTasks}
+              completedTasks={completedTask}
+            />
+          </PivotItem>
+        </Pivot>
     </div>
   );
 };
