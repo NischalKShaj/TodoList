@@ -22,11 +22,13 @@ const TodoComplete: React.FC<TodoCompleteProps> = ({
           <li key={task.id}>
             <div className="task-box">
               {task.Task}
-              <FontIcon
-                iconName="Delete"
-                onClick={() => handleDeleteCompletedTask(task.id)}
-                style={{ cursor: "pointer" }}
-              />
+              <div className="taskIcon">
+                <FontIcon
+                  iconName="Delete"
+                  onClick={() => handleDeleteCompletedTask(task.id)}
+                  style={{ cursor: "pointer", fontSize: "24px" }}
+                />
+              </div>
             </div>
           </li>
         ))}

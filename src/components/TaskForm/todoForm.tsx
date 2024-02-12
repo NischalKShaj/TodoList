@@ -1,5 +1,5 @@
 import React, { FormEvent, useRef, useState } from "react";
-import style from "./todoform.module.css";
+import "./todoform.css";
 
 interface TodoFormProps {
   onSave: (input: string, description: string) => void;
@@ -30,26 +30,31 @@ const TodoForm: React.FC<TodoFormProps> = ({ onSave }) => {
   };
 
   return (
-    <div className={style.formContainer}>
+    <div className="formContainer">
       <form onSubmit={handleSubmit}>
-        <input
-          ref={inputRef}
-          value={input}
-          onChange={handleInputRef}
-          type="text"
-          placeholder="Enter the task"
-          required
-          className={style.formInput}
-        />
-        <textarea
-          ref={descriptionRef}
-          value={description}
-          onChange={handleDescriptionRef}
-          rows={9}
-          placeholder="Enter the description for the task"
-          className={style.formInput}
-        />
-        <button type="submit" className={style.formButton}>
+        <div className="task-box">
+          <input
+            ref={inputRef}
+            value={input}
+            onChange={handleInputRef}
+            type="text"
+            placeholder="Enter the task"
+            required
+            className="formInput"
+          />
+        </div>
+        <div className="description-box">
+          <textarea
+            ref={descriptionRef}
+            value={description}
+            onChange={handleDescriptionRef}
+            cols={100}
+            rows={9}
+            placeholder="Enter the description for the task"
+            className="formInput"
+          />
+        </div>
+        <button type="submit" className="formButton">
           Add Task
         </button>
       </form>

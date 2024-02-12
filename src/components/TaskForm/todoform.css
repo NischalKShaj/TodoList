@@ -2,17 +2,36 @@
 .formContainer {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
   padding: 1rem;
-  background-color: #e4dcdc;
+  background-color: #f5f5f5;
   border-radius: 8px;
+}
+
+.task-box,
+.description-box {
+  padding: 1rem;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: 98%;
+  margin-bottom: 1rem;
+}
+
+.task-box {
+  display: flex;
+  align-items: center;
 }
 
 .formInput {
   padding: 0.5rem;
   border: none;
-  border-bottom: 2px solid #ccc;
   outline: none;
+  flex: 1;
+}
+
+.descriptionInput {
+  height: 100px;
+  resize: none;
 }
 
 .formButton {
@@ -22,6 +41,7 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin-top: 1rem;
 }
 
 .formButton:hover {
