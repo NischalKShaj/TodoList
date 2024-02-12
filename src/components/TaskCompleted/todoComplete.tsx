@@ -1,6 +1,7 @@
 import React from "react";
 import { TodoListTask } from "../types";
 import { FontIcon } from "@fluentui/react";
+import "./todoCompletedTask.css";
 
 interface TodoCompleteProps {
   completedTasks: TodoListTask[];
@@ -15,16 +16,18 @@ const TodoComplete: React.FC<TodoCompleteProps> = ({
     setCompletedTask((prevTasks) => prevTasks.filter((task) => task.id !== id));
   };
   return (
-    <div>
+    <div className="completedTaskBox">
       <ul>
         {completedTasks.map((task) => (
           <li key={task.id}>
-            {task.Task}
-            <FontIcon
-              iconName="Delete"
-              onClick={() => handleDeleteCompletedTask(task.id)}
-              style={{ cursor: "pointer" }}
-            />
+            <div className="task-box">
+              {task.Task}
+              <FontIcon
+                iconName="Delete"
+                onClick={() => handleDeleteCompletedTask(task.id)}
+                style={{ cursor: "pointer" }}
+              />
+            </div>
           </li>
         ))}
       </ul>

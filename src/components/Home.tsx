@@ -4,7 +4,7 @@ import { Pivot, PivotItem } from "@fluentui/react";
 import TaskList from "./TaskList/TaskList";
 import { TodoListTask } from "./types";
 import TodoComplete from "./TaskCompleted/todoComplete";
-import "./Home.css"
+import "./Home.css";
 
 const Home = () => {
   // for loading the stored component
@@ -42,15 +42,19 @@ const Home = () => {
 
   return (
     <div className="TodoContainer">
-        <Pivot >
-            <PivotItem headerText="Task">
-              <TaskList
-                tasks={tasks}
-                setTask={setTask}
-                completedTasks={completedTask}
-                setCompletedTasks={setCompletedTasks}
-              />
-            </PivotItem>
+      <header className="headerStyle">
+        <h2>ToDo Application</h2>
+      </header>
+      <div className="pivotContainer">
+        <Pivot styles={{ root: { display: "flex", justifyContent: "center" } }}>
+          <PivotItem headerText="Task">
+            <TaskList
+              tasks={tasks}
+              setTask={setTask}
+              completedTasks={completedTask}
+              setCompletedTasks={setCompletedTasks}
+            />
+          </PivotItem>
           <PivotItem headerText="Add Task">
             <TodoForm onSave={handleSaveTask} />
           </PivotItem>
@@ -61,6 +65,7 @@ const Home = () => {
             />
           </PivotItem>
         </Pivot>
+      </div>
     </div>
   );
 };

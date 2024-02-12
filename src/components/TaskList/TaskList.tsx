@@ -74,74 +74,76 @@ const TaskList: React.FC<TaskListProps> = ({
             }
           />
           <span>{item.Task}</span>
-          <FontIcon
-            iconName="Info"
-            title={item.description}
-            style={{ cursor: "pointer" }}
-          />
-          <input
-            id={`nameInput-${item.id}`}
-            type="text"
-            value={editedTask.newTaskName || item.Task}
-            onChange={(e) =>
-              setEditedTask({
-                ...editedTask,
-                id: item.id,
-                newTaskName: e.target.value,
-              })
-            }
-            style={{ display: "none" }}
-          />
-
-          <textarea
-            id={`descriptionInput-${item.id}`}
-            onChange={(e) =>
-              setEditedTask({
-                ...editedTask,
-                id: item.id,
-                newDescription: e.target.value,
-              })
-            }
-            style={{ display: "none" }}
-          />
-          <FontIcon
-            iconName="EditNote"
-            onClick={() => {
-              const nameInputField = document.getElementById(
-                `nameInput-${item.id}`
-              ) as HTMLInputElement;
-              const descriptionInputField = document.getElementById(
-                `descriptionInput-${item.id}`
-              ) as HTMLTextAreaElement;
-
-              if (nameInputField && descriptionInputField) {
-                nameInputField.style.display =
-                  nameInputField.style.display === "none" ? "block" : "none";
-                descriptionInputField.style.display =
-                  descriptionInputField.style.display === "none"
-                    ? "block"
-                    : "none";
+          <div className="taskIcon">
+            <FontIcon
+              iconName="Info"
+              title={item.description}
+              style={{ cursor: "pointer" }}
+            />
+            <input
+              id={`nameInput-${item.id}`}
+              type="text"
+              value={editedTask.newTaskName || item.Task}
+              onChange={(e) =>
+                setEditedTask({
+                  ...editedTask,
+                  id: item.id,
+                  newTaskName: e.target.value,
+                })
               }
-            }}
-            style={{ cursor: "pointer" }}
-          />
+              style={{ display: "none" }}
+            />
 
-          <FontIcon
-            iconName="Delete"
-            onClick={() => handleDeleteTask(item.id)}
-            style={{ cursor: "pointer" }}
-          />
-          <FontIcon
-            iconName="Save"
-            onClick={() =>
-              handleEditTask(
-                editedTask.id,
-                editedTask.newTaskName,
-                editedTask.newDescription
-              )
-            }
-            style={{ cursor: "pointer" }}
-          />
+            <textarea
+              id={`descriptionInput-${item.id}`}
+              onChange={(e) =>
+                setEditedTask({
+                  ...editedTask,
+                  id: item.id,
+                  newDescription: e.target.value,
+                })
+              }
+              style={{ display: "none" }}
+            />
+            <FontIcon
+              iconName="EditNote"
+              onClick={() => {
+                const nameInputField = document.getElementById(
+                  `nameInput-${item.id}`
+                ) as HTMLInputElement;
+                const descriptionInputField = document.getElementById(
+                  `descriptionInput-${item.id}`
+                ) as HTMLTextAreaElement;
+
+                if (nameInputField && descriptionInputField) {
+                  nameInputField.style.display =
+                    nameInputField.style.display === "none" ? "block" : "none";
+                  descriptionInputField.style.display =
+                    descriptionInputField.style.display === "none"
+                      ? "block"
+                      : "none";
+                }
+              }}
+              style={{ cursor: "pointer" }}
+            />
+
+            <FontIcon
+              iconName="Delete"
+              onClick={() => handleDeleteTask(item.id)}
+              style={{ cursor: "pointer" }}
+            />
+            <FontIcon
+              iconName="Save"
+              onClick={() =>
+                handleEditTask(
+                  editedTask.id,
+                  editedTask.newTaskName,
+                  editedTask.newDescription
+                )
+              }
+              style={{ cursor: "pointer" }}
+            />
+          </div>
         </div>
       ))}
     </div>
