@@ -78,7 +78,7 @@ const TaskList: React.FC<TaskListProps> = ({
             <FontIcon
               iconName="Info"
               title={item.description}
-              style={{ cursor: "pointer", fontSize: "24px" ,margin:"5px"}}
+              style={{ cursor: "pointer", fontSize: "24px", margin: "5px" }}
             />
             <input
               id={`nameInput-${item.id}`}
@@ -124,13 +124,13 @@ const TaskList: React.FC<TaskListProps> = ({
                       : "none";
                 }
               }}
-              style={{ cursor: "pointer", fontSize: "24px",margin:"5px" }}
+              style={{ cursor: "pointer", fontSize: "24px", margin: "5px" }}
             />
 
             <FontIcon
               iconName="Delete"
               onClick={() => handleDeleteTask(item.id)}
-              style={{ cursor: "pointer", fontSize: "24px",margin:"5px" }}
+              style={{ cursor: "pointer", fontSize: "24px", margin: "5px" }}
             />
             <FontIcon
               iconName="Save"
@@ -141,7 +141,7 @@ const TaskList: React.FC<TaskListProps> = ({
                   editedTask.newDescription
                 )
               }
-              style={{ cursor: "pointer", fontSize: "24px" ,margin:"5px"}}
+              style={{ cursor: "pointer", fontSize: "24px", margin: "5px" }}
             />
           </div>
         </div>

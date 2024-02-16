@@ -19,7 +19,7 @@ const TodoForm: React.FC<TodoFormProps> = ({ onSave }) => {
   const handleDescriptionRef = (
     event: React.ChangeEvent<HTMLTextAreaElement | null>
   ) => {
-    setDescription(event.currentTarget.value);
+    setDescription(event.currentTarget.value); 
   };
 
   const handleSubmit = (event: FormEvent) => {

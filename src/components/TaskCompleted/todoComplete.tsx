@@ -1,7 +1,8 @@
 import React from "react";
-import { TodoListTask } from "../types";
+
 import { FontIcon } from "@fluentui/react";
 import "./todoCompletedTask.css";
+import { TodoListTask } from "../types";
 
 interface TodoCompleteProps {
   completedTasks: TodoListTask[];
