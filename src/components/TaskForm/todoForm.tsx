@@ -54,9 +54,11 @@ const TodoForm: React.FC<TodoFormProps> = ({ onSave }) => {
             className="formInput"
           />
         </div>
-        <button type="submit" className="formButton">
-          Add Task
-        </button>
+        {input.trim() !== "" && description.trim() !== "" && (
+          <button type="submit" className="formButton">
+            Add Task
+          </button>
+        )}
       </form>
     </div>
   );
